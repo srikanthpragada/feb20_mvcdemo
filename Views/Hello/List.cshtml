@@ -1,0 +1,40 @@
+﻿@model IEnumerable<MvcDemo.Models.Course>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>List Of Courses</title>
+</head>
+<body>
+   
+    <table border="1" style="width:100%">
+        <tr>
+            <th>
+               Name 
+            </th>
+            <th>
+               Duration
+            </th>
+        </tr>
+    
+    @foreach (var course in Model)
+    {
+        <tr>
+            <td>
+                @course.Name
+            </td>
+            <td>
+                @course.Duration
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>
