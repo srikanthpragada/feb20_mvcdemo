@@ -6,4 +6,6 @@
 *.pdb
 /photos/*
 /scripts/*
+/fonts/*
+
 /upload.bat

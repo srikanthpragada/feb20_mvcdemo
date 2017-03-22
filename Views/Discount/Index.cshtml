@@ -1,0 +1,38 @@
+﻿@model MvcDemo.Models.DiscountModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Discount </title>
+  
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        <h2>Discount Calculation</h2>
+            <div>Amount</div>
+            @Html.EditorFor(model => model.Amount)
+            @Html.ValidationMessageFor(model => model.Amount)
+            <p />
+            <div>Discount Rate </div>
+            @Html.EditorFor(model => model.Rate)
+            @Html.ValidationMessageFor(model => model.Rate)
+            <p />
+            <input type="submit" value="Calculate" />
+
+        if (Model.Discount > 0)
+        {
+            <h2>@Model.Discount</h2>
+        }
+    }
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+</body>
+</html>
