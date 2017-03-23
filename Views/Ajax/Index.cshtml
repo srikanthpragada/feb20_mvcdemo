@@ -1,0 +1,21 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Ajax Demo</title>
+</head>
+<body>
+    @Ajax.ActionLink("Show Date and Time", "Now",
+                 new AjaxOptions {UpdateTargetId = "result"})
+    <h2  id="result"></h2>
+
+    @Scripts.Render("~/bundles/jquery")
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+</body>
+</html>

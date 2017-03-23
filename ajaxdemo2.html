@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Ajax Demo</title>
+	<meta charset="utf-8" />
+    <script src="Scripts/jquery-1.10.2.js"></script>
+    <script>
+
+        function getNow()
+        {
+            // $.get("Ajax/Now", null, showResult);
+            $.get("Ajax/Now", null,
+                function (data) {
+                    $("#result").html(data);
+                }
+            );
+        }
+
+        function getTitle()
+        {
+            $.get("Ajax/Title/" + $("#bookid").val(), null,
+                function (data) {
+                    $("#title").val(data);
+                }
+            );
+        }
+
+        /*
+        function showResult(data)
+        {
+            $("#result").html(data);
+        }
+        */
+
+    </script>
+</head>
+<body>
+    <button onclick="getNow()">Get Date and Time</button>
+    <h2 id="result"></h2>
+
+    Book Number : <input type="text" id="bookid" onblur="getTitle()"/>
+    <input type="text" id="title" readonly />
+    
+</body>
+</html>

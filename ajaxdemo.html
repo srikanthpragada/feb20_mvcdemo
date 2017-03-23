@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Ajax Demo</title>
+	<meta charset="utf-8" />
+    <script>
+        var xhr;
+        function getNow()
+        {
+            xhr = new XMLHttpRequest();
+            xhr.open("get", "Ajax/Now", true);
+            xhr.onreadystatechange = showResult;
+            xhr.send();  // make request
+        }
+
+        function showResult()
+        {
+            if (xhr.readyState == 4)
+                document.getElementById("result").innerHTML = xhr.responseText;
+        }
+    </script>
+</head>
+<body>
+    <button onclick="getNow()">Get Date and Time</button>
+
+    <h2 id="result"></h2>
+</body>
+</html>
