@@ -1,0 +1,36 @@
+﻿@model MvcDemo.Models.Product
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        
+            <h2>Product</h2>
+
+            @Html.HiddenFor(model => model.Id)
+            <div>Product Name</div>
+            @Html.TextBoxFor(model => model.Name)
+            <p/>
+            <div>Quantity</div>
+            @Html.TextBoxFor(model => model.Qoh)
+            <p />
+            <div>Price</div>
+            @Html.TextBoxFor(model => model.Price)
+            <p/>
+            <input type="submit" value="Update"  />
+    }
+    
+    <div>@ViewBag.Message</div>
+</body>
+</html>

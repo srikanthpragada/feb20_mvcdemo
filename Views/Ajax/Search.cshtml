@@ -11,7 +11,9 @@
     <title>Search</title>
 </head>
 <body>
-    @using (Ajax.BeginForm(new AjaxOptions { HttpMethod = "post", UpdateTargetId = "books" }))
+    @using (Ajax.BeginForm(new AjaxOptions
+        { HttpMethod = "post",
+          UpdateTargetId = "books" }))
     {
       <span>Book Title : </span>
       <input type="text" name="title" />

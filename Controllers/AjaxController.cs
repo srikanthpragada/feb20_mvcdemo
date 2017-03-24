@@ -8,9 +8,13 @@ namespace MvcDemo.Controllers
 {
     public class AjaxController : Controller
     {
-
-        List<String> books = new List<String> { "C# Comp. Ref", "Asp.Net MVC Unleashed", "AngularJS" };
-
+        List<String> books = new List<String>
+          { "C# Comp. Ref",
+            "Asp.Net MVC Unleashed",
+            "AngularJS",
+            "C# Cook Book",
+            "Asp.Net Unleashed"};
+            
         public ActionResult Index()
         {
             return View();
@@ -25,8 +29,15 @@ namespace MvcDemo.Controllers
         [HttpPost]
         public ActionResult Search(string title)
         {
-            return View();
+            List<String> selbooks = new List<String>();
+
+            foreach (string book in books)
+                if (book.Contains(title))
+                    selbooks.Add(book);
+
+            return PartialView("books", selbooks);
         }
+                        
 
 
 
