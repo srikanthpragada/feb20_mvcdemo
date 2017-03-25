@@ -20,13 +20,14 @@ namespace MvcDemo.Controllers
             return View();
         }
 
-
+        [Authorize]
         public ActionResult Search()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult Search(string title)
         {
             List<String> selbooks = new List<String>();

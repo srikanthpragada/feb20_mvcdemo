@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace MvcDemo.Controllers
 {
+    [Authorize]
     public class ProductsController : Controller
     {
         public ActionResult Index()

@@ -121,9 +121,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AjaxController.cs" />
+    <Compile Include="Controllers\CacheController.cs" />
     <Compile Include="Controllers\DiscountController.cs" />
     <Compile Include="Controllers\HelloController.cs" />
+    <Compile Include="Controllers\MailController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -181,6 +184,11 @@
     <Content Include="Views\Ajax\books.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Products\Edit.cshtml" />
+    <Content Include="Views\Mail\Index.cshtml" />
+    <Content Include="Views\Cache\Index.cshtml" />
+    <Content Include="Views\Cache\Now.cshtml" />
+    <Content Include="Views\Cache\Today.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
