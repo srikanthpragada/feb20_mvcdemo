@@ -1,0 +1,31 @@
+﻿@model MvcDemo.Models.Category
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit Category</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+
+        @Html.AntiForgeryToken()
+        <div>Category Code </div>
+        @Html.TextBoxFor(model => model.Code , new { ReadOnly = "True" } )
+        <div>Category Description </div>
+        @Html.TextBoxFor(model => model.Description)
+        <p></p>
+        <input type="submit" value="Update" />
+    }
+    
+    <div>
+        @Html.ActionLink("List Of Categories", "Index")
+    </div>
+</body>
+</html>

@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Mail;
-using System.Web;
 using System.Web.Mvc;
 
 namespace MvcDemo.Controllers
@@ -28,16 +25,19 @@ namespace MvcDemo.Controllers
                 m.IsBodyHtml = true;  // body contains HTML
                 m.Body = body;
 
-                //Attachment a1 = new Attachment(Request.MapPath("web.config"));
+                //Attachment a1 = new Attachment(Request.MapPath("favicon.ico"));
                 //m.Attachments.Add(a1);
+
+                Attachment a1 = new Attachment(@"f:\classroom\names.txt");
+                m.Attachments.Add(a1);
 
                 SmtpClient smtp = new SmtpClient("127.0.0.1", 25);
 
                 // log on to mail server - Authenticate the sender 
-                //smtp.UseDefaultCredentials = false;
-                //smtp.EnableSsl = false;
-                //smtp.Credentials =
-                //   new System.Net.NetworkCredential("joe@aspnet.com", "joe");
+                smtp.UseDefaultCredentials = false;
+                smtp.EnableSsl = false;
+                smtp.Credentials =
+                   new System.Net.NetworkCredential("admin@st.com", "a");
 
                 smtp.Send(m);
                 ViewBag.Message = "Mail Sent Successfully!";

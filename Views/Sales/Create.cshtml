@@ -1,0 +1,43 @@
+﻿@model MvcDemo.Models.Sale
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <script src="~/Scripts/jquery-1.12.4.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+    <link href="~/Content/themes/base/all.css" rel="stylesheet" />
+    <title>Create</title>
+    <script>
+        $(function () {
+            $("#TransDate").datepicker({ dateFormat: "dd-mm-yy" });
+        });
+    </script>
+</head>
+<body>
+    <h1>New Sale</h1>
+    @using (Html.BeginForm())
+    {
+
+        <div>Select Product</div>
+        @Html.DropDownList("ProductId", (IEnumerable<SelectListItem>)@ViewBag.Products)
+        <div>Quantity Sold</div>
+        @Html.TextBoxFor(item => item.Qty)
+        <div>Amount</div>
+        @Html.TextBoxFor(item => item.Amount)
+        <div>Sold On</div>
+        @Html.TextBoxFor(item => item.TransDate)
+        <p></p>
+        <input type="submit" value="Add Sale"   />
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</body>
+</html>
