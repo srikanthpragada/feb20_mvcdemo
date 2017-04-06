@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="Scripts/jquery-1.12.4.js"></script>
+    <script>
+        function getBooks()
+        {
+            $.getJSON("api/Books", {}, showBooksTable);
+        }
+
+        function getBook() {
+            $.ajax(
+                {
+                    dataType: "json",
+                    url:  "api/Books/" + $("#bookid").val(),
+                    success: showBook,
+                    error :  showError
+                }
+           );
+                
+        }
+
+        function showError()
+        {
+            alert("Sorry! Book Not Found!");
+        }
+
+        function showBook(book)
+        {
+            alert(book.Title);
+        }
+
+        function showBooks(books)
+        {
+            $("#books").html("");  // clear content of UL 
+            $.each(books,
+                function (idx, book) {
+                    $("#books").append("<li>" + book.Title + "</li>");
+                }
+            );
+
+        }
+
+        function showBooksTable(books) {
+            $("#output").css("visibility", "visible");
+            $("#bookstable").html("");  // clear content of UL 
+            $.each(books,
+                function (idx, book) {
+                    $("#bookstable").append("<tr><td>" + book.Title + "</td><td>" + book.Price + "</td></tr>");
+                }
+            );
+
+        }
+
+    </script>
+</head>
+<body>
+     <button onclick="getBooks()">Get Books</button>
+     <ul id="books">
+         
+     </ul>
+
+     <table border="1" style="visibility :hidden" id="output">
+         <thead>
+              <tr style="background-color:red;color:white;font-weight :bold"><th>Title</th><th>Price</th></tr>
+         </thead>
+         <tbody id="bookstable">
+
+         </tbody>
+     </table>
+     <p/>
+     Enter Book Id : <input type="text" id="bookid" />
+     <button onclick="getBook()">Get Book</button>
+
+</body>
+</html>

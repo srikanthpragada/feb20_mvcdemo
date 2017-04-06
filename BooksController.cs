@@ -10,7 +10,7 @@ namespace MvcDemo
 {
     public class BooksController : ApiController
     {
-           List<Book> books = new List<Book>
+        List<Book> books = new List<Book>
             {
                 new Book {  Id = 1, Title = "Asp.Net MVC", Price = 550},
                 new Book { Id = 2, Title = "Entity Framework", Price = 500 }
@@ -19,15 +19,15 @@ namespace MvcDemo
         // GET api/<controller>
         public IEnumerable<Book> Get()
         {
-           
-            return books; 
+
+            return books;
 
         }
 
         // GET api/<controller>/5
         public Book Get(int id)
         {
-            foreach(Book b in books)
+            foreach (Book b in books)
             {
                 if (b.Id == id)
                     return b;

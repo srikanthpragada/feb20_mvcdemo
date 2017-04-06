@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="Scripts/jquery-1.12.4.js"></script>
+    <script>
+        function getTitles() {
+            $.getJSON("api/Titles", {}, showTitlesTable);
+        }
+        function showTitlesTable(titles) {
+            $("#output").css("visibility", "visible");
+            $("#titlesTable").html("");  // clear content of UL
+            $.each(titles,
+                function (idx, title) {
+                    $("#titlesTable").append("<tr><td>" + title.TitleId + "</td><td>" + title.Name + "</td><td>" + title.Author + "</td><td>" + title.Price + "</td></tr>");
+                }
+            );
+        }
+
+        function addTitle()
+        {
+            $.ajax(
+                   {
+                       url: "api/Titles",
+                       method: "POST",
+                       data: {
+                           "Name": $("#Name").val(),
+                           "Author": $("#Author").val(),
+                           "Price" : $("#Price").val()
+                       },
+                       success: function () { alert("Title was added successfully!") },
+                       error: function () { alert("Sorry! Title was not added!") },
+                   }
+              );
+
+        }
+
+        function deleteTitle() {
+            $.ajax(
+                   {
+                       url: "api/Titles/" + $("#id").val(),
+                       method: "DELETE",
+                       success: function () { alert("Title was deleted successfully!") },
+                       error: function () { alert("Sorry! Title was not deleted!") },
+                   }
+              );
+
+        }
+
+    </script>
+</head>
+<body>
+    <button onclick="getTitles()">Get Titles</button>
+    <table border="1" style="visibility :hidden" id="output">
+        <thead>
+            <tr style="background-color:red;color:white;font-weight :bold"><th>Id</th></th><th>Title</th><th>Author</th><th>Price</th></tr>
+        </thead>
+        <tbody id="titlesTable"></tbody>
+    </table>
+
+    <p/>
+    <h3>Delete Title</h3>
+    Title  ID : <br />
+    <input type="text" id="id" />
+    <button onclick="deleteTitle()">Delete</button>
+
+    <p />
+    <h3>Add Title</h3>
+
+    Title : <br />
+    <input type="text" id="Name" />
+    <p />
+    Author : <br />
+    <input type="text" id="Author" />
+    <p />
+    Price : <br />
+    <input type="text" id="Price" />
+    <p />
+    <button onclick="addTitle()">Add Title</button>
+
+</body>
+</html>
