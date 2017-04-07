@@ -8,6 +8,7 @@
         function getTitles() {
             $.getJSON("api/Titles", {}, showTitlesTable);
         }
+
         function showTitlesTable(titles) {
             $("#output").css("visibility", "visible");
             $("#titlesTable").html("");  // clear content of UL
@@ -45,6 +46,33 @@
                        error: function () { alert("Sorry! Title was not deleted!") },
                    }
               );
+        }
+
+        function getTitle() {
+            $.getJSON("api/Titles/" + $("#id").val(), {}, showTitle);
+        }
+
+        function showTitle(title)
+        {
+            $("#Name").val(title.Name);
+            $("#Author").val(title.Author);
+            $("#Price").val(title.Price);
+        }
+
+        function updateTitle() {
+            $.ajax(
+                   {
+                       url: "api/Titles/" + $("#id").val(),
+                       method: "PUT",
+                       data: {
+                           "Name": $("#Name").val(),
+                           "Author": $("#Author").val(),
+                           "Price": $("#Price").val()
+                       },
+                       success: function () { alert("Title was updated successfully!") },
+                       error: function () { alert("Sorry! Title was not updated!") },
+                   }
+              );
 
         }
 
@@ -64,6 +92,7 @@
     Title  ID : <br />
     <input type="text" id="id" />
     <button onclick="deleteTitle()">Delete</button>
+    <button onclick="getTitle()">Details</button>
 
     <p />
     <h3>Add Title</h3>
@@ -78,6 +107,7 @@
     <input type="text" id="Price" />
     <p />
     <button onclick="addTitle()">Add Title</button>
+    <button onclick="updateTitle()">Update Title</button>
 
 </body>
 </html>

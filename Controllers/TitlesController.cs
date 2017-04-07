@@ -43,8 +43,17 @@ namespace MvcDemo.Controllers
         }
 
         // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody] Title newTitle)
         {
+            CatalogContext ctx = new CatalogContext();
+            var title = ctx.Titles.Find(id);  // get title from DB
+            if (title == null)
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            // update db object with data coming from request 
+            title.Name = newTitle.Name;
+            title.Price = newTitle.Price;
+            title.Author = newTitle.Author;
+            ctx.SaveChanges();
         }
 
         
